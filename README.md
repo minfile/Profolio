@@ -8,3 +8,4 @@ Data anlysis in : https://github.com/minfile/Profolio/tree/master
 It include use Python, Tableau
 
 Website in: [https://github.com/minfile/Profolio/tree/master](https://github.com/minfile/Profolio/tree/main/Cinema%20website)
+Recommend to read [website intro.pdf](https://github.com/minfile/Profolio/blob/main/website%20intro.pdf)
