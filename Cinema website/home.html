@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="generator" content="cinema website">
+    <meta name="author" content="LIANG Jiamin 55440844">
+    <meta name="description"
+        content="The website can show movie information,trailers preview,house seating plans and buying and printing ticket">
+    <meta name="keyword" content="cinema, buy cinima ticket">
+    <title>CITY CINEMA</title>
+    <style>
+        @import url(css/style.css);
+
+        dd>img {
+            float: left;
+        }
+
+
+        dd>img:hover {
+            cursor: pointer;
+
+        }
+
+        dt,
+        dd {
+            font-weight: 700;
+        }
+
+        span {
+            font-weight: 200;
+        }
+
+        .video {
+            background-color: #eddcd2;
+            text-align: center;
+        }
+
+        .column {
+            float: left;
+            width: 40%;
+            margin: 10px;
+            height: 500px;
+        }
+
+        .column1 {
+            float: right;
+            width: 40%;
+            margin: 10px;
+            height: 500px;
+        }
+
+        .footer {
+            margin-top: 600px;
+            height: 50%;
+            text-align: center;
+        }
+    </style>
+    <script src="js/movies.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <!--The top part:logo , name and link to another page-->
+        <h1>CITY <img src="img/filmreel.png" alt="logo"> CINEMA</h1>
+    </header>
+    <nav>
+        <div class="menu">
+            <ul>
+                <li class="home">
+                    <h5><a href="home.html" class="not-active">HOME</a></h5>
+                </li>
+                <li class="nowshowing">
+                    <h5><a href="nowshowing.html">NOW SHOWING</a></h5>
+                </li>
+                <li class="ticket">
+                    <h5><a href="ticket.html">TICKET</a></h5>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <hr>
+
+
+    <!--This show the video about new movie-->
+    <div class="video">
+        <h3>Now Showing movie - Casablanca</h3>
+        <video id="v" controls autoplay onended="mesg();" width="320" height="240">
+            <source id="mp4_change" src="" type="video/mp4">
+            Video Play
+        </video>
+    </div>
+
+    <!--Show all now showing movie list-->
+    <div class="row">
+        <fieldset class="column">
+            <legend>
+                <h3>Now Showing movie</h3>
+            </legend>
+            <div class="now_w">
+
+            </div>
+           
+            <br>
+           
+            <br>
+           
+
+        </fieldset>
+
+        <!-- show upcoming movie list-->
+        <fieldset class="column1">
+            <legend>
+                <h3>Upcoming movie</h3>
+            </legend>
+            <div class="up_w">
+
+            </div>
+
+
+        </fieldset>
+    </div>
+
+    <div class="footer">
+        <footer>
+            <p>
+                @Copyright of resources belong to corresponding copyright owners<br>
+                - fair use for education purpose|<a href="home.html">Home</a>|<a href="design.html">Design</a>
+            </p>
+        </footer>
+    </div>
+
+
+    <script>
+        var getinformation = getMovies();
+        var column = document.querySelector(".now_w");
+        var column1 = document.querySelector(".up_w");
+       
+
+        for(var i =0;i<getinformation.length;i++){
+            if(getinformation[i].type=="now"){
+            column.innerHTM = "";
+            column.innerHTML += '<dl><dt>Name:<span>'+getinformation[i].name+'</span><br></dd>'+
+               '<dd><img class="img" src="'+getinformation[i].thumbnail+'" alt="casablanca picture" onclick="clickImg('+i+')"></dd>'+
+               '<dd>Cast:<span>'+getinformation[i].cast+'</span><br></dd>'+
+               '<dd>Director:<span>'+getinformation[i].director+'</span><br></dd>'+
+               '<dd>Duration:<span>'+getinformation[i].duration + 'mins <br></dd>';
+            
+
+            }
+            if(getinformation[i].type=="upcoming"){
+            column1.innerHTM = "";
+            column1.innerHTML += '<dl><dt>Name:<span>'+getinformation[i].name+'</span><br></dd>'+
+               '<dd><img class="img" src="'+getinformation[i].thumbnail+'" alt="casablanca picture" onclick="clickImg('+i+')"></dd>'+
+               '<dd>Cast:<span>'+getinformation[i].cast+'</span><br></dd>'+
+               '<dd>Director:<span>'+getinformation[i].director+'</span><br></dd>'+
+               '<dd>Duration:<span>'+getinformation[i].duration + 'mins <br></dd>';
+            }
+
+            
+        }
+
+
+
+        var set = document.querySelector("#v");
+        set.onload = setfilm();
+
+        var video_count = 0;
+
+        function setfilm() {
+            set.src = getinformation[0].src;
+        }
+
+        function mesg() {
+            var time = setTimeout(change, 2000);
+
+        }
+        function change() {
+            video_count++;
+            if (video_count == getinformation.length) video_count = 0;
+            set.src = getinformation[video_count].src;
+            set.play();
+
+        }
+        var a;
+        function clickImg(a) {
+            set.pause();
+            switch (a) {
+                case 0:
+                    video_count = 0;
+                    set.src = getinformation[video_count].src;
+                    set.play();
+                    break;
+                case 1:
+                    video_count = 1;
+                    set.src = getinformation[video_count].src;
+                    set.play();
+                    break;
+                case 2:
+                    video_count = 2;
+                    set.src = getinformation[video_count].src;
+                    set.play();
+                    break;
+                case 3:
+                    video_count = 3;
+                    set.src = getinformation[video_count].src;
+                    set.play();
+                    break;
+                case 4:
+                    video_count = 4;
+                    set.src = getinformation[video_count].src;
+                    set.play();
+                    break;
+                case 5:
+                    video_count = 5;
+                    set.src = getinformation[video_count].src;
+                    set.play();
+                    break;
+
+            }
+        }
+
+
+
+
+    </script>
+
+</body>
+
+</html>

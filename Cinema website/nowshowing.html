@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Now Showing</title>
+    <style>
+        @import url(css/style.css);
+
+        #selectCinema {
+            text-align: center;
+        }
+
+        .movie {
+            margin: 10px;
+            border: 3px solid #a5a58d;
+        }
+
+        .movie form {
+            text-align: center;
+            margin: 10px
+        }
+
+        .movie img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .column {
+            float: left;
+            width: 33.33%;
+            height: 150px;
+
+        }
+
+        iframe {
+            border-width: 0px;
+        }
+    </style>
+    <script src="js/movies.js"></script>
+    <script src="http://courses.cs.cityu.edu.hk/cs2204/cw3/cinemas.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <!--The top part:logo , name and link to another page-->
+        <h1>CITY <img src="img/filmreel.png" alt="logo"> CINEMA</h1>
+        <nav>
+            <div class="menu">
+                <ul>
+                    <li class="home">
+                        <h5><a href="home.html">HOME</a></h5>
+                    </li>
+                    <li class="nowshowing">
+                        <h5><a href="nowshowing.html" class="logo">NOW SHOWING</a></h5>
+                    </li>
+                    <li class="ticket">
+                        <h5><a href="ticket.html">TICKET</a></h5>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <hr>
+
+
+    <!-- show now showing movie list-->
+    <div>
+        <fieldset>
+            <legend>
+                <h2>Now Showing</h2>
+            </legend>
+
+            <div>
+                <form id="selectCinema" method="get" action="ticket.html" target="_blank">
+                    <label>Venue:</label>
+                    <select id="venue" name="venue" onchange="change()">
+                    </select>
+
+                </form>
+
+                <p id="demo"></p>
+
+            </div>
+
+            <div class="movie">
+                <div id='1'>
+                    <img src="img/casablanca.png" alt="casablanca picture">
+                    <form id="buyTicket1" method="get" action="ticket.html" target="_blank">
+
+                        <label>Name:</label>
+                        <input type="text" class="name" name="name" value="Casablanca"><br><br>
+
+                        <label for="time1">Date and Time:</label>
+                        <select id="time1" name="Time1">
+
+                        </select>
+
+                        <input type="submit" value="Buy Ticket" />
+                    </form>
+                </div>
+            </div>
+
+            <br>
+
+            <div class="movie">
+                <div id='2'>
+                    <img src="img/chocolate.jpg" alt="chocolate picture">
+
+                    <form id="buyTicket2" method="get" action="ticket.html" target="_blank">
+
+                        <label>Name:</label>
+                        <input type="text" class="name" name="name" value="Chocolate"><br><br>
+
+
+                        <label for="time2">Date and Time:</label>
+                        <select id="time2" name="Time2">
+
+                        </select>
+
+                        <input type="submit" value="Buy Ticket" />
+
+                    </form>
+                </div>
+            </div>
+            <br>
+
+
+            <div class="movie">
+                <div id='3'>
+                    <img src="img/nature.jpg" alt="nature picture">
+                    <form id="buyTicket3" method="get" action="ticket.html" target="_blank">
+
+                        <label>Name:</label>
+                        <input type="text" class="name" name="name" value="Nature"><br><br>
+
+                        <label for="time3">Date and Time:</label>
+                        <select id="time3" name="Time3">
+
+                        </select>
+
+                        <input type="submit" value="Buy Ticket" />
+                    </form>
+                </div>
+            </div>
+        </fieldset>
+        <br>
+
+    </div>
+
+
+    <!--show cinema location and  map-->
+    <div>
+        <fieldset>
+            <legend>
+                <h2>Cinema Location</h2>
+            </legend>
+            <ul>
+                <li class="column">
+                    <h3>City Cinema - Festival Walk</h3>
+                    Address: Level UG, Festival Walk, 80 Tat Chee Avenue, Kowloon Tong, Kowloon<br>
+
+                </li>
+                <li class="column">
+                    <h3>City Cinema - Mong Kok</h3>
+                    Address:6-12 Sai Yeung Choi Street, Mongkok, Kowloon
+                    <br>
+
+                </li>
+                <li class="column">
+                    <h3>City Cinema - Central</h3>
+
+                    Address:Podium L1, ifc Mall, 8 Finance Street, Central
+                    <br>
+
+                </li>
+            </ul>
+
+        </fieldset>
+    </div>
+
+    <footer>
+        <p>
+            @Copyright of resources belong to corresponding copyright owners<br>
+            - fair use for education purpose|<a href="home.html">Home</a>|<a href="design.html">Design</a>
+        </p>
+    </footer>
+    <script>
+        var getcinemasinfo = getCinemas();
+
+        var sel = document.getElementById('venue');
+        var date_1 = document.getElementById('time1');
+        var date_2 = document.getElementById('time2');
+        var date_3 = document.getElementById('time3');
+
+
+        //set venue option
+        for (var i = 0; i < getcinemasinfo.length; i++) {
+            var opt = document.createElement('option');
+            opt.appendChild(document.createTextNode(getcinemasinfo[i].branchName));
+            opt.value = i;
+            sel.appendChild(opt);
+        }
+
+
+        function startchange() {
+            var set = document.querySelector("#venue");
+            var changeStart = set.value;
+            showMovie(changeStart);
+            setMovie(changeStart);
+        }
+
+
+        startchange();
+        function showMovie(changeStart) {
+            document.getElementById(1).style.visibility = "hidden";
+            document.getElementById(2).style.visibility = "hidden";
+            document.getElementById(3).style.visibility = "hidden";
+
+            for (var i = 0; i < getcinemasinfo[changeStart].movies.length; i++) {
+
+                var getID = getcinemasinfo[changeStart].movies[i].id; //2
+
+                var x = document.getElementById(getID);
+                x.style.visibility = 'visible';
+
+            }
+
+        }
+
+        function setMovie(value) { //第几个戏院
+            // remove all the option when user have select cinema
+            removeOption(date_1);
+            removeOption(date_2);
+            removeOption(date_3);
+
+            // rewrite all option
+            for (var z = 0; z < getcinemasinfo[value].movies.length; z++) {
+                for (var x = 0; x < getcinemasinfo[value].movies[z].shows.length; x++) {
+                    //alert(getcinemasinfo[value].movies[z].shows[x].datetime);
+                    if (getcinemasinfo[value].movies[z].id == '1') {
+                        var opt = document.createElement('option');
+                        opt.appendChild(document.createTextNode(getcinemasinfo[value].movies[z].shows[x].datetime));
+                        opt.value = getcinemasinfo[value].movies[z].shows[x].index;
+                        date_1.appendChild(opt);
+                    }
+                    if (getcinemasinfo[value].movies[z].id == '2') {
+                        var opt = document.createElement('option');
+                        opt.appendChild(document.createTextNode(getcinemasinfo[value].movies[z].shows[x].datetime));
+                        opt.value = getcinemasinfo[value].movies[z].shows[x].index;
+                        date_2.appendChild(opt);
+
+                    }
+                    if (getcinemasinfo[value].movies[z].id == '3') {
+                        var opt = document.createElement('option');
+                        opt.appendChild(document.createTextNode(getcinemasinfo[value].movies[z].shows[x].datetime));
+                        opt.value = getcinemasinfo[value].movies[z].shows[x].index;
+                        date_3.appendChild(opt);
+
+                    }
+
+                }
+            }
+
+        }
+
+        function removeOption(selectElement) {
+            var i, L = selectElement.options.length - 1;
+            for (i = L; i >= 0; i--) {
+                selectElement.remove(i);
+            }
+        }
+
+        function change() {
+            var getOption = document.getElementById("venue");
+            var get = getOption.value;
+            setMovie(get);
+            showMovie(get);
+        }
+
+
+
+        function getMovieName(movieArray, id,index) {
+            for (let i = 0; i < movieArray.length; i++) {
+                if (movieArray[i].id == id) return movieArray[i].name,index;
+            }
+            return undefined;
+        }
+
+        function init(movies,movieID,index) {
+            let movie= getMovies();
+            let cinemas = getCinemas();
+            for (let i = 0; i < cinemas.length; i++) {
+                for (let j = 0; j < cinemas[i].movies.length; j++) {
+                    console.log("  movie name " + getMovieName(movie, movieID,index));
+                }
+            }
+
+
+        }
+
+
+    </script>
+</body>
+
+</html>

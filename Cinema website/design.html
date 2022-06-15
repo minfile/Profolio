@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Design Page</title>
+    <style>
+        @import url(css/style.css);
+
+        .cw2 img {
+            width: 90%
+        }
+
+        body {
+            font-size: 16px;
+        }
+
+        td,
+        th {
+            border: 2px solid orange;
+        }
+
+        span {
+            font-weight: 700;
+            color: tomato;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <!--The top part:logo , name and link to another page-->
+        <h1>CITY <img src="img/filmreel.png" alt="logo" clas="logo"> CINEMA</h1>
+        <nav>
+            <div class="menu">
+                <ul>
+                    <li class="home">
+                        <h5><a href="home.html">HOME</a></h5>
+                    </li>
+                    <li class="nowshowing">
+                        <h5><a href="nowshowing.html">NOW SHOWING</a></h5>
+                    </li>
+                    <li class="ticket">
+                        <h5><a href="ticket.html">TICKET</a></h5>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <hr>
+
+    <div class="cw1">
+
+        <h3>CS1- Design Concept</h3>
+        <h5>Home Page:<br>
+            d)I use video URL and source attribute to play video in the website.<br>
+            e)Use url to show movie image, and definition list to write movie information.
+        </h5>
+        <h5>Now Showing Page:<br>
+            f)Use category (selection box) for user choose cinema.<br>
+            g)Use form to provide selection for customer.<br>
+            h)Link google map to the web to show information of cinema locations.
+        </h5>
+        <h5>Ticket Page:<br>
+            i)Use list to show ticket information.<br>
+            k)Use table to show the seat plan.<br>
+            l)Use button to link print page.
+        </h5>
+
+        <h5>Print Page:<br>
+            m)A confirm button on clicking will go to Print page.
+        </h5>
+
+    </div>
+    <hr>
+    <div class="cw2">
+        <h3>Cw2 - Design Concept</h3><br>
+        17)Sketch diagram<br>
+        <img src="img/diagram.png" alt="17"><br>
+        18 and 19)<br>
+        1 style sheets with 11 groups of styles which apply in home page, ticket page, now showing page, print page<br>
+        <table>
+
+            <tr>
+                <th>Page / sheets</th>
+                <th>Number of group of style</th>
+                <th>function</th>
+            </tr>
+            <tr>
+                <th>style.css</th>
+                <td>1 style sheets - 11 groups<br>
+                    1) header <br>
+                    2) header img & @keyframes move<br>
+                    3) .menu<br>
+                    4) .not-active<br>
+                    5) a & a:hover<br>
+                    6) nav ul li<br>
+                    7) body and fieldset
+                    8) footer
+                </td>
+                <td>
+                    <br>
+                    1) set the header in center and change background color<br>
+                    2) set the animation for logo<br>
+                    3) menu fix position<br>
+                    4) disabled menu item of the page<br>
+                    5) no decoration and color change of font when the cursor point it<br>
+                    6) change the font font-size and list-style<br>
+                    7) change background color<br>
+                    8) set footer in center <br>
+
+                </td>
+            </tr>
+            <tr>
+                <th>Home page</th>
+                <td>8 groups<br>
+                    1) img and img hover<br>
+                    2) span <br>
+                    3) .video <br>
+                    4) .column and .column1<br>
+                    5) .footer<br>
+                    6) @import url(style.css);
+                </td>
+                <td><br>
+                    1) to change the cursor into the hand pointer<br>
+                    2) make the informationtype be bold<br>
+                    3) change the background color and make video in center <span>(CSS3 line 28-31)</span><br>
+                    4) make it to 2 column layout <span>(CSS3 line 35-47)</span><br>
+                    5) make footer in the button<br>
+                    6)import style sheets
+                </td>
+            </tr>
+            <tr>
+                <th>Now showing page</th>
+                <td>5 groups<br>
+                    1) .movie<br>
+                    2) .movie form<br>
+                    3) .movie img<br>
+                    4) .column<br>
+                    5) @import url(style.css);
+                </td>
+                <td>
+                    <br>
+                    1) set the border and change color <span>(CSS3 line 10- 13)</span><br>
+                    2) make the form information in center and margin with imgae<span>(CSS3 line 14-17)</span><br>
+                    3) make the image aligned<br>
+                    4) make 3 column <br>
+                    5) import style sheets
+                </td>
+            </tr>
+            <tr>
+                <th>Ticket page</th>
+                <td>6 groups<br>
+                    1) table<br>
+                    2) td and td:hover<br>
+                    3 .column and column1 <br>
+                    4. .info<br>
+                    5. @import url(style.css);
+                </td>
+                <td>1)make the border collapse <span>(CSS3 line 11-15)</span><br>
+                    2)seat change color when pointed by the cursor <span>(CSS3 line 17-23)</span><br>
+                    3)make 2 column<br>
+                    4) set margin<br>
+                    5) import style sheets
+                </td>
+
+            </tr>
+            <tr>
+                <th>Print page</th>
+                <td>6 groups<br>
+                    1) .ticket1 and .ticket2<br>
+                    2） .footer<br>
+                    3) .pagebreak<br>
+                    4) @media print<br>
+                    5) fieldset
+                </td>
+                <td>
+                    1) make 2 column and change the font family<span>(CSS3 line 16&24)</span> <br>
+                    2) set footer at button<br>
+                    3) set pagebreak<br>
+                    4) make header and footer disappear when use brower print<br>
+                    5) set shawdow <span>(CSS3 line 48)</span>
+                </td>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+    <div id="cw3">
+        <h3>Cw3 - Design Concept</h3>
+        <h5>Home page</h5>
+        <h5>Set up handler in HTML</h5>
+        <p> use in div class="video" line:91, call the mesg() function to set video change time<br>
+        </p>
+        <h5>Set up handler in Javascipt</h5>
+        <p>use querySelector function select now movie and up comming movies column (line:180-181)<br>
+            Then use innerHTML function to write information.<br>
+            use querySelector function select video(line:218). Then call function to control video.
+        </p>
+
+        <h5>Now showing page</h5>
+        <h5>Set up handler in HTML</h5>
+        <p>use inchange="change()" (line:79) to change the option <br>
+        </p>
+        <h5>Set up handler in Javascipt</h5>
+        <p>use getElementByID select option data (line:193-196) <br>
+            In line 200-205 use for loop to set cinema venue option<br>
+            In line 208 statchange() function to set show which movie and option call showMovie and setMovie function.
+        </p>
+        <h5>Ticket page</h5>
+        <h5>Set up handler in HTML</h5>
+        <p>all the table onclick will call to seat function</p>
+        <h5>Set up handler in Javascipt</h5>
+        <p>getElementByID("id") (line:154) to control the table<br>
+        use querySelector(line227-230)to change the textbox value
+        </p>
+
+        <h5>Print page</h5>
+        <h5>Set up handler in Javascipt</h5>
+        <p>use getElementById to change the innerHTML(line:142-146)</p>
+
+    </div>
+
+    <div>
+        <hr>
+        <h3>Reference</h3>
+        <ol>
+            <li><a href="https://www.google.com.hk/maps/place/%E8%91%B5%E8%8A%B3%E8%91%B5%E5%AF%8C%E8%B7%AF7-11%E8%99%9F%E8%91%B5%E6%B6%8C%E5%BB%A3%E5%A0%B4/@22.3584385,114.1253039,17z/data=!3m1!4b1!4m5!3m4!1s0x3403f8bdb7e44439:0xc991df1a0b2e32d8!8m2!3d22.3584385!4d114.1274926"
+                    target="_blank">Google map</a></li>
+            <li><a href="https://www.w3schools.com/html/html_links.asp" target="_blank">W3Schools.com</a></li>
+            <li><a href="https://www.cinema.com.hk/tc/site/cinemainfo/cinemas" target="_blank">broad way</a></li>
+            <li><a href="https://www.tutorialspoint.com/how-to-create-a-2-column-layout-grid-with-css"
+                    target="_blank">tutorialspoint</a></li>
+            <li><a href="https://www.oxxostudio.tw/articles/201803/css-animation.html" target="_blank">完整解析 CSS 動畫 ( CSS
+                    Animation )</a></li>
+            <li><a href="https://ithelp.ithome.com.tw/articles/10196917" target="_blank">Day 24 - Sticky Nav</a></li>
+        </ol>
+    </div>
+
+    <footer>
+        <p>
+            @Copyright of resources belong to corresponding copyright owners<br>
+            - fair use for education purpose|<a href="home.html">Home</a>|<a href="design.html">Design</a>
+        </p>
+    </footer>
+</body>
+
+</html>

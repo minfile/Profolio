@@ -1,0 +1,67 @@
+header {
+    margin-top: 30px;
+    text-align: center;
+    background-color: #f0efeb;
+    height: 150px;
+  }
+
+header img{
+    animation-name: move;
+    animation-duration: 3s;
+}
+
+@keyframes move{
+    0%{
+      transform: translateX(0px);
+    }
+    100%{
+        transform: translateX(1000px);
+
+    }
+}
+
+  .menu{
+    position: fixed;
+    right: 10px;
+    top: 40px;
+    width: 8em;
+    margin-top: -2.5em;
+    background-color: cornsilk;
+  }
+
+  .not-active{
+    pointer-events: none;
+  }
+
+  a{
+      text-decoration: none;
+      color:cb997e;
+  }
+
+  a:hover{
+      color: orange;
+  }
+
+  nav ul li{
+    list-style: none;
+    display: inline-block;
+    height: 42px;
+    padding: 0 10px;
+    font-size: 18px;
+}
+
+
+
+    body {
+        background-color: #fff1e6;
+      }
+
+      fieldset{
+        background-color: #eddcd2;
+      }
+
+      footer{
+        text-align: center
+        
+      }
+  

@@ -1,0 +1,236 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Ticket Page</title>
+  <style>
+    @import url(css/style.css);
+
+    table {
+      margin-left: auto;
+      margin-right: auto;
+      border-collapse: collapse;
+      
+    }
+
+    td {
+      border: 2px solid orange;
+      padding: 30px;
+    }
+
+    td:hover {
+      background-color: tan;
+    }
+
+    .column {
+      float: left;
+      width: 40%;
+      margin: 10px;
+      height: auto;
+    }
+
+    .column1 {
+      float: right;
+      width: 40%;
+      margin: 10px;
+      height: 500px;
+    }
+
+    .info {
+      margin: 5%;
+    }
+
+    .selected {
+      background-color: bisque;
+    }
+  </style>
+  <script src="js/movies.js"></script>
+  <script src=" http://courses.cs.cityu.edu.hk/cs2204/cw3/cinemas.js"></script>
+
+
+
+
+</head>
+
+<body>
+
+  <header>
+    <!--The top part:logo , name and link to another page-->
+    <h1>CITY <img src="img/filmreel.png" alt="logo" class="logo"> CINEMA</h1>
+  </header>
+  <nav>
+    <div class="menu">
+      <ul>
+        <li class="home">
+          <h5><a href="home.html">HOME</a></h5>
+        </li>
+        <li class="nowshowing">
+          <h5><a href="nowshowing.html">NOW SHOWING</a></h5>
+        </li>
+        <li class="ticket">
+          <h5><a href="ticket.html" class="not-active">TICKET</a></h5>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <hr>
+
+  <!--show ticket information-->
+  <form action="print.html" method="get">
+  <div class="column">
+    <fieldset>
+      <legend>
+        <h2>Information</h2>
+      </legend>
+
+      <h3>Ticket Information:</h3>
+      <div class="info">
+        <div>Venue: <input type="text" id="place" name="place" value="place"></div>
+        <div>Movie: <input type="text" id="moviename" name="moviename" value="movie name"></div>
+        <div> Time: <input type="text" id="datetime" name="datetime" value="date and time"></div>
+        <div>house: <input type="text" id="house" name="house" value="house number"><br></div>
+      </div>
+    </fieldset>
+  </div>
+  <div id="column1">
+    <table>
+
+      <tr>
+        <th></th>
+        <th colspan="4">--Screen--</th>
+      </tr>
+
+      <tr>
+        <th>Row A</th>
+        <td id="A1" onclick="seat(id);">1</td>
+        <td id="A2" onclick="seat(id);">2</td>
+        <td id="A3" onclick="seat(id);">3</td>
+        <td id="A4" onclick="seat(id);">4</td>
+      </tr>
+      <tr>
+        <th>Row B</th>
+        <td id="B1" onclick="seat(id);">1</td>
+        <td id="B2" onclick="seat(id);">2</td>
+        <td id="B3" onclick="seat(id);">3</td>
+        <td id="B4" onclick="seat(id);">4</td>
+      </tr>
+      <tr>
+        <th>Row C</th>
+        <td id="C1" onclick="seat(id);">1</td>
+        <td id="C2" onclick="seat(id);">2</td>
+        <td id="C3" onclick="seat(id);">3</td>
+        <td id="C4" onclick="seat(id);">4</td>
+      </tr>
+      <tr>
+        <th></th>
+        <th colspan="4">--Seat--</th>
+      </tr>
+    </table>
+  </div>
+
+  <!--select seat-->
+  <div class="seat">
+    <fieldset>
+      <legend>
+        <h2>Seat Booked</h2>
+      </legend>
+      <label for="seat" accesskey="l">Seat Number:</label>
+      <div id="seatnumber"><input type="text" id="seat" name="seat" value="" size="50"></div>
+     
+        <input type="submit" value="Confirm" />
+
+    </fieldset>
+  </div>
+</form>
+  <footer>
+    <p>
+      @Copyright of resources belong to corresponding copyright owners<br>
+      - fair use for education purpose|<a href="home.html">Home</a>|<a href="design.html">Design</a>
+    </p>
+  </footer>
+  <script>
+    var seatplan = document.getElementById("id");
+    function seat(id) {
+      if(document.getElementById(id).style.backgroundColor != "yellow"){
+      document.getElementById(id).style.backgroundColor = "yellow";    
+      document.querySelector("#seat").value += id + " ";}
+
+    }
+  </script>
+
+  <script>
+    function getParams() {
+      var idx = document.URL.indexOf('?');
+      var params = new Array();
+      if (idx != -1) {
+        var pairs = document.URL.substring(idx + 1, document.URL.length).split('&');
+        for (var i = 0; i < pairs.length; i++) {
+          nameVal = pairs[i].split('=');
+          params[nameVal[0]] = nameVal[1];
+        }
+      }
+      return params;
+    }
+    params = getParams();
+    venue = unescape(params["venue"]);
+    name = unescape(params["name"]);
+    Time1 = unescape(params["Time1"]);
+    Time2 = unescape(params["Time2"]);
+    Time3 = unescape(params["Time3"]);
+    document.querySelector("#moviename").value = name;
+    var Time = "undefined";
+    if (Time1 != "undefined") {
+      Time = Time1;
+    } else if (Time2 != "undefined") {
+      Time = Time2;
+    } else if (Time3 != "undefined") {
+      Time = Time3;
+    }
+    //transfer data
+    var getcinemasinfo = getCinemas();
+    switch (Time) {
+      case '1':
+        venue = getcinemasinfo[0].branchName;
+        Time = getcinemasinfo[0].movies[0].shows[0].datetime;
+        house = getcinemasinfo[0].movies[0].shows[0].house;
+        break;
+      case '2':
+        venue = getcinemasinfo[0].branchName;
+        Time = getcinemasinfo[0].movies[0].shows[1].datetime;
+        house = getcinemasinfo[0].movies[0].shows[1].house;
+        break;
+      case '3':
+        venue = getcinemasinfo[0].branchName;
+        Time = getcinemasinfo[0].movies[1].shows[0].datetime;
+        house = getcinemasinfo[0].movies[1].shows[0].house;
+        break;
+      case '4':
+        venue = getcinemasinfo[1].branchName;
+        Time = getcinemasinfo[1].movies[0].shows[0].datetime;
+        house = getcinemasinfo[1].movies[0].shows[0].house;
+        break;
+      case '5':
+        venue = getcinemasinfo[1].branchName;
+        Time = getcinemasinfo[1].movies[0].shows[1].datetime;
+        house = getcinemasinfo[1].movies[0].shows[1].house;
+        break;
+      case '6':
+        venue = getcinemasinfo[2].branchName;
+        Time = getcinemasinfo[2].movies[0].shows[0].datetime;
+        house = getcinemasinfo[2].movies[0].shows[0].house;
+        break;
+
+    }
+
+    document.querySelector("#datetime").value = Time;
+
+    document.querySelector("#place").value = venue;
+    document.querySelector("#house").value = house;
+
+  </script>
+
+</body>
+
+</html>

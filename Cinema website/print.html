@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Print</title>
+    <style>
+        @import url(css/style.css);
+
+        .ticket1 {
+            float: left;
+      width: 40%;
+      margin: 10px;
+      height: 100px;
+      font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .ticket2 {
+        float: right;
+      width: 40%;
+      margin: 10px;
+      height: 100px;
+      font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        .footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+        }
+
+        .pagebreak{
+            page-break-before: always;
+        }
+
+        @media print {
+
+            header,
+            footer,nav {
+                display: none;
+            }
+            .pagebreak { page-break-after: always;}
+        }
+
+        fieldset{
+            box-shadow: 10px 10px 5px grey;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <!--The top part:logo , name and link to another page-->
+        <h1>CITY <img src="img/filmreel.png" alt="logo" class="logo"> CINEMA</h1>
+   
+    <nav>
+        <div class="menu">
+            <ul>
+                <li class="home">
+                    <h5><a href="home.html">HOME</a></h5>
+                </li>
+                <li class="nowshowing">
+                    <h5><a href="nowshowing.html">NOW SHOWING</a></h5>
+                </li>
+                <li class="ticket">
+                    <h5><a href="ticket.html">TICKET</a></h5>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+    <hr>
+
+    <hr>
+
+    <!--show ticket information-->
+    <div class="ticket1">
+        <fieldset>
+            <legend>
+                <h2>Ticket 1</h2>
+            </legend>
+            
+                <div id="v">Cinema:</div>
+                <div id="m">Movie:</div>
+                <div id="d"> Date Time:</div>
+                <div id="h">House No:</div>
+                <div id="s">Seat:</div>
+            
+
+        </fieldset>
+    </div>
+    <div class="pagebreak">
+    <div class="ticket2">
+        <fieldset>
+            <legend>
+                <h2>Ticket 2</h2>
+            </legend>
+           
+                <div class="info">Cinema:Tsuen Wan</div>
+                <div class="info">Movie:Casablanca</div>
+                <div class="info">Date Time:9 March 9:30pm</div>
+                <div class="info">House No:4</div>
+                <div class="info">Seat:A1</div>
+            
+
+        </fieldset>
+    </div>
+</div>
+    <div class="footer">
+    <footer>
+        <p>
+            @Copyright of resources belong to corresponding copyright owners<br>
+            - fair use for education purpose|<a href="home.html">Home</a>|<a href="design.html">Design</a>
+        </p>
+    </footer>
+</div>
+
+<script>
+      function getParams() {
+      var idx = document.URL.indexOf('?');
+      var params = new Array();
+      if (idx != -1) {
+        var pairs = document.URL.substring(idx + 1, document.URL.length).split('&');
+        for (var i = 0; i < pairs.length; i++) {
+          nameVal = pairs[i].split('=');
+          params[nameVal[0]] = nameVal[1];
+        }
+      }
+      return params;
+    }
+    params = getParams();
+    venue = unescape(params["place"]);
+    name = unescape(params["moviename"]);
+    Time = unescape(params["datetime"]);
+    house = unescape(params["house"]);
+    seat = unescape(params["seat"]);
+
+
+    document.getElementById("v").innerHTML += venue;
+    document.getElementById("m").innerHTML += name;
+    document.getElementById("d").innerHTML += Time;
+    document.getElementById("h").innerHTML += house;
+    document.getElementById("s").innerHTML += seat;
+
+
+</script>
+</body>
+
+</html>
